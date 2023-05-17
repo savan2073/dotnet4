@@ -48,7 +48,6 @@ namespace FizzBuzzWeb.Pages
             }
             if (FizzBuzz.BirthYear >= 1899 && FizzBuzz.BirthYear <= 2022)
             {
-            
             }
 
             FizzBuzz.LeapYear = FizzBuzz.CheckLeapYear(FizzBuzz.BirthYear);
