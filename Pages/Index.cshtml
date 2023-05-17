@@ -1,0 +1,25 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Fizz Buzz";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome @Model.Name</h1>
+    <form method="post">
+        <label style="float: left" asp-for="FizzBuzz.FirstName"></label>
+        <input class="form-control" id="formGroupExampleInput" placeholder="Wprowadź swoje imię" asp-for="FizzBuzz.FirstName" />
+        <label style="float: left" asp-for="FizzBuzz.LastName"></label>
+        <input class="form-control" id="formGroupExampleInput" placeholder="Wprowadź swoje nazwisko" asp-for="FizzBuzz.LastName" />
+        <label style="float: left" asp-for="FizzBuzz.BirthYear"></label>
+        <input class="form-control" id="formGroupExampleInput" placeholder="Podaj swój rok urodzenia" asp-for="FizzBuzz.BirthYear" />
+        <button type="submit" class="btn btn-primary">Zatwierdź</button><br />
+        @if (Model.FizzBuzz != null)
+        {
+            <div class="alert alert-primary" role="alert">@Model.AlertMessage</div>
+        }
+        <span asp-validation-for="FizzBuzz.FirstName" class="text-danger"></span><br />
+        <span asp-validation-for="FizzBuzz.BirthYear" class="text-danger"></span>
+    </form>
+</div>
