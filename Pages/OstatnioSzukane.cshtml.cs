@@ -18,7 +18,7 @@ namespace FizzBuzzWeb.Pages
         public IList<FizzBuzz> FizzBuzzes { get; set; }
         public void OnGet()
         {
-            var Wynik = HttpContext.Session.GetString("Wynik");
+            var Wynik = HttpContext.Session.GetString("Data");
             if(Wynik != null)
             {
                 FizzBuzz = JsonConvert.DeserializeObject<FizzBuzz>(Wynik);
@@ -27,14 +27,8 @@ namespace FizzBuzzWeb.Pages
                             in _context.FizzBuzz 
                             orderby FizzBuzz.Date descending 
                             select FizzBuzz).Take(20);
-            if(wyswietl != null && wyswietl.Any())
-            {
-                FizzBuzzes = wyswietl.ToList();
-            }
-            else
-            {
-                FizzBuzzes = new List<FizzBuzz>();
-            }
+            FizzBuzzes = wyswietl.ToList();
+
         }
     }
 }

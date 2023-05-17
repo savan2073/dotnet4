@@ -6,7 +6,7 @@ namespace FizzBuzzWeb.Models
     public class FizzBuzz
     {
         public int Id { get; set; }
-        public string Wynik { get; set; } = string.Empty;
+        public string Wynik { get; set; } = "-";
         public DateTime Date { get; set; }
         [Display (Name = "Rok urodzenia")]
         [Required(ErrorMessage = "Pole Rok Urodzenia jest obowiązkowe"),
@@ -20,7 +20,7 @@ namespace FizzBuzzWeb.Models
         public string FirstName { get; set; }
         [Display(Name = "Nazwisko")]
         [StringLength(maximumLength: 100), Column(TypeName ="varchar(100)")]
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
 
         public bool LeapYear { get; set; }
 

@@ -45,8 +45,15 @@ namespace FizzBuzzWeb.Pages
                 AlertMessage = "Podane wartości są nieprawidłowe";
                 return Page();
             }
-            
-            if(FizzBuzz.BirthYear >= 1899 && FizzBuzz.BirthYear <= 2022)
+            FizzBuzz.LeapYear = FizzBuzz.CheckLeapYear(FizzBuzz.BirthYear);
+            FizzBuzz.Date = DateTime.Now;
+            _context.FizzBuzz.Add(FizzBuzz);
+            _context.SaveChanges();
+
+            Lista.user.Add(FizzBuzz);
+            HttpContext.Session.SetString("Data", JsonConvert.SerializeObject(Lista));
+
+            if (FizzBuzz.BirthYear >= 1899 && FizzBuzz.BirthYear <= 2022)
             {
                 if (FizzBuzz.LeapYear)
                 {
@@ -63,13 +70,7 @@ namespace FizzBuzzWeb.Pages
             {
                 return Page();
             }
-            FizzBuzz.LeapYear = FizzBuzz.CheckLeapYear(FizzBuzz.BirthYear);
-            FizzBuzz.Date = DateTime.Now;
-            _context.FizzBuzz.Add(FizzBuzz);
-            _context.SaveChanges();
-
-            Lista.user.Add(FizzBuzz);
-            HttpContext.Session.SetString("Data", JsonConvert.SerializeObject(Lista));
+            
         }
 
         public void OnGet()
