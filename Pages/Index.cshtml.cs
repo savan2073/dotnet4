@@ -29,9 +29,9 @@ namespace FizzBuzzWeb.Pages
             var dataList = new List<FizzBuzz>();
 
             var sessionData = HttpContext.Session.GetString("Data");
-            if (!string.IsNullOrEmpty(sessionData))
+            if (sessionData != null)
             {
-                dataList = JsonConvert.DeserializeObject<List<FizzBuzz>>(sessionData);
+                Lista = JsonConvert.DeserializeObject<Lista>(sessionData);
             }
 
 

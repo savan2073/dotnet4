@@ -15,7 +15,15 @@ namespace FizzBuzzWeb.Pages
 
             if (!string.IsNullOrEmpty(Data))
             {
-                FizzBuzzx = JsonConvert.DeserializeObject<List<FizzBuzz>>(Data);
+                try
+                {
+                    FizzBuzzx = JsonConvert.DeserializeObject<List<FizzBuzz>>(Data);
+                }
+                catch(JsonSerializationException)
+                {
+                    var singleFizzBuzz = JsonConvert.DeserializeObject<FizzBuzz>(Data);
+                    FizzBuzzx = new List<FizzBuzz> { singleFizzBuzz };
+                }
             }
         }
     }

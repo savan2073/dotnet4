@@ -6,7 +6,7 @@ namespace FizzBuzzWeb.Models
     public class FizzBuzz
     {
         public int Id { get; set; }
-        public string Wynik { get; set; }
+        public string Wynik { get; set; } = string.Empty;
         public DateTime Date { get; set; }
         [Display (Name = "Rok urodzenia")]
         [Required(ErrorMessage = "Pole Rok Urodzenia jest obowiązkowe"),
