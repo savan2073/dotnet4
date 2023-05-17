@@ -26,7 +26,6 @@ namespace FizzBuzzWeb.Pages
 
         public IActionResult OnPost()
         {
-            var dataList = new List<FizzBuzz>();
 
             var sessionData = HttpContext.Session.GetString("Data");
             if (sessionData != null)
@@ -46,11 +45,24 @@ namespace FizzBuzzWeb.Pages
                 AlertMessage = "Podane wartości są nieprawidłowe";
                 return Page();
             }
-            if (FizzBuzz.BirthYear >= 1899 && FizzBuzz.BirthYear <= 2022)
-            {
             
-            }
+            if(FizzBuzz.BirthYear >= 1899 && FizzBuzz.BirthYear <= 2022)
+            {
+                if (FizzBuzz.LeapYear)
+                {
+                    AlertMessage = $"{FizzBuzz.FirstName} {FizzBuzz.LastName} urodził/a się w {FizzBuzz.BirthYear} roku. To był rok przestępny";
+                }
+                else
+                {
+                    AlertMessage = $"{FizzBuzz.FirstName} {FizzBuzz.LastName} urodził/a się w {FizzBuzz.BirthYear} roku. To nie był rok przestępny";
+                }
 
+                return Page();
+            }
+            else
+            {
+                return Page();
+            }
             FizzBuzz.LeapYear = FizzBuzz.CheckLeapYear(FizzBuzz.BirthYear);
             FizzBuzz.Date = DateTime.Now;
             _context.FizzBuzz.Add(FizzBuzz);
@@ -58,17 +70,6 @@ namespace FizzBuzzWeb.Pages
 
             Lista.user.Add(FizzBuzz);
             HttpContext.Session.SetString("Data", JsonConvert.SerializeObject(Lista));
-
-            if (FizzBuzz.LeapYear)
-            {
-                AlertMessage = $"{FizzBuzz.FirstName} {FizzBuzz.LastName} urodził/a się w {FizzBuzz.BirthYear} roku. To był rok przestępny";
-            }
-            else
-            {
-                AlertMessage = $"{FizzBuzz.FirstName} {FizzBuzz.LastName} urodził/a się w {FizzBuzz.BirthYear} roku. To nie był rok przestępny";
-            }
-
-            return Page();
         }
 
         public void OnGet()

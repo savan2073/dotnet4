@@ -27,7 +27,14 @@ namespace FizzBuzzWeb.Pages
                             in _context.FizzBuzz 
                             orderby FizzBuzz.Date descending 
                             select FizzBuzz).Take(20);
-            FizzBuzzes = wyswietl.ToList();
+            if(wyswietl != null && wyswietl.Any())
+            {
+                FizzBuzzes = wyswietl.ToList();
+            }
+            else
+            {
+                FizzBuzzes = new List<FizzBuzz>();
+            }
         }
     }
 }

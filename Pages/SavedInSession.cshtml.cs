@@ -17,8 +17,8 @@ namespace FizzBuzzWeb.Pages
             {
                 try
                 {
-                    FizzBuzzx = JsonConvert.DeserializeObject<List<FizzBuzz>>(Data);
-                }
+                FizzBuzzx = JsonConvert.DeserializeObject<List<FizzBuzz>>(Data);
+            }
                 catch(JsonSerializationException)
                 {
                     var singleFizzBuzz = JsonConvert.DeserializeObject<FizzBuzz>(Data);
