@@ -10,7 +10,7 @@ namespace FizzBuzzWeb.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        private readonly FizzBuzzContext _context;
+        private readonly ApplicationDbContext _context;
         [BindProperty]
         public FizzBuzz FizzBuzz { get; set; }
         public Lista Lista = new Lista();
@@ -18,7 +18,7 @@ namespace FizzBuzzWeb.Pages
         public string Name { get; set; }
         public string AlertMessage { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger, FizzBuzzContext context)
+        public IndexModel(ILogger<IndexModel> logger, ApplicationDbContext context)
         {
             _logger = logger;
             _context = context;
@@ -47,6 +47,7 @@ namespace FizzBuzzWeb.Pages
             }
             FizzBuzz.LeapYear = FizzBuzz.CheckLeapYear(FizzBuzz.BirthYear);
             FizzBuzz.Date = DateTime.Now;
+            FizzBuzz.UserMail = User.Identity.Name;
             _context.FizzBuzz.Add(FizzBuzz);
             _context.SaveChanges();
 

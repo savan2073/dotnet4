@@ -24,6 +24,8 @@ namespace FizzBuzzWeb.Models
 
         public bool LeapYear { get; set; }
 
+        public string? UserMail { get; set; }
+
         public bool CheckLeapYear(int year)
         {
             if (year % 4 == 0)

@@ -1,16 +1,18 @@
 using FizzBuzzWeb.Data;
 using FizzBuzzWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
 
 namespace FizzBuzzWeb.Pages
 {
+    [Authorize]
     public class OstatnioSzukaneModel : PageModel
     {
-        private readonly FizzBuzzContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public OstatnioSzukaneModel(FizzBuzzContext context)
+        public OstatnioSzukaneModel(ApplicationDbContext context)
         {
             _context = context;
         }

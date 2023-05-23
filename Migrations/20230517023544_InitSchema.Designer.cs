@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FizzBuzzWeb.Migrations
 {
-    [DbContext(typeof(FizzBuzzContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20230517023544_InitSchema")]
     partial class InitSchema
     {
